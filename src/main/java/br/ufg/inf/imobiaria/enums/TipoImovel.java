@@ -4,7 +4,7 @@ public enum TipoImovel {
 	APARTAMENTO(0, "Apartamento"),
 	CASA(1, "Casa"),
 	RURAL(2, "Rural"),
-	TERRENO_lOTE(3, "Lote ou Terreno"),
+	TERRENO_LOTE(3, "Lote ou Terreno"),
 	SALA_COMERCIAL(4, "Sala Comercial");
 		
 	private int id;

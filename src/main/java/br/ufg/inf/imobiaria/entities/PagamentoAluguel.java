@@ -30,7 +30,11 @@ public class PagamentoAluguel implements Serializable {
 
 	private Float valorPagamento;
 
+	@Column(name = "data_vencimento")
 	private Date dtVencimento;
+
+	@Column(name = "data_pagamento")
+	private Date dtPagamento;
 
 	private FormaPagamento formaPagamento;
 
@@ -39,12 +43,13 @@ public class PagamentoAluguel implements Serializable {
 	}
 
 	public PagamentoAluguel(Integer idPagamentoAluguel, Contrato contrato, Float valorPagamento, Date dtVencimento,
-			FormaPagamento formaPagamento) {
+			Date dtPagamento, FormaPagamento formaPagamento) {
 		super();
 		this.idPagamentoAluguel = idPagamentoAluguel;
 		this.contrato = contrato;
 		this.valorPagamento = valorPagamento;
 		this.dtVencimento = dtVencimento;
+		this.dtPagamento = dtPagamento;
 		this.formaPagamento = formaPagamento;
 	}
 
@@ -88,11 +93,19 @@ public class PagamentoAluguel implements Serializable {
 		this.formaPagamento = formaPagamento;
 	}
 
+	public Date getDtPagamento() {
+		return dtPagamento;
+	}
+
+	public void setDtPagamento(Date dtPagamento) {
+		this.dtPagamento = dtPagamento;
+	}
+
 	@Override
 	public String toString() {
 		return "PagamentoAluguel [idPagamentoAluguel=" + idPagamentoAluguel + ", contrato=" + contrato
-				+ ", valorPagamento=" + valorPagamento + ", dtVencimento=" + dtVencimento + ", formaPagamento="
-				+ formaPagamento + "]";
+				+ ", valorPagamento=" + valorPagamento + ", dtVencimento=" + dtVencimento + ", dtPagamento="
+				+ dtPagamento + ", formaPagamento=" + formaPagamento + "]";
 	}
 
 }

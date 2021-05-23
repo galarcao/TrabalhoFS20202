@@ -30,6 +30,8 @@ public class Imovel implements Serializable {
 
 	private String endereco;
 
+	private String complemento;
+
 	private String bairro;
 
 	private String cidade;
@@ -43,22 +45,28 @@ public class Imovel implements Serializable {
 	@Column(name = "quantidade_suite")
 	private Integer qdtSuite;
 
+	@Column(name = "metragem")
+	private Integer metragem;
+
 	public Imovel() {
 		super();
 	}
 
-	public Imovel(Integer idImovel, TipoImovel tipoImovel, StatusImovel statusImovel, String endereco, String bairro,
-			String cidade, Integer qtdQuarto, Integer qdtVagas, Integer qdtSuite) {
+	public Imovel(Integer idImovel, TipoImovel tipoImovel, StatusImovel statusImovel, String endereco,
+			String complemento, String bairro, String cidade, Integer qtdQuarto, Integer qdtVagas, Integer qdtSuite,
+			Integer metragem) {
 		super();
 		this.idImovel = idImovel;
 		this.tipoImovel = tipoImovel;
 		this.statusImovel = statusImovel;
 		this.endereco = endereco;
+		this.complemento = complemento;
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.qtdQuarto = qtdQuarto;
 		this.qdtVagas = qdtVagas;
 		this.qdtSuite = qdtSuite;
+		this.metragem = metragem;
 	}
 
 	public Integer getIdImovel() {
@@ -91,6 +99,14 @@ public class Imovel implements Serializable {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 
 	public String getBairro() {
@@ -133,11 +149,20 @@ public class Imovel implements Serializable {
 		this.qdtSuite = qdtSuite;
 	}
 
+	public Integer getMetragem() {
+		return metragem;
+	}
+
+	public void setMetragem(Integer metragem) {
+		this.metragem = metragem;
+	}
+
 	@Override
 	public String toString() {
 		return "Imovel [idImovel=" + idImovel + ", tipoImovel=" + tipoImovel + ", statusImovel=" + statusImovel
-				+ ", endereco=" + endereco + ", bairro=" + bairro + ", cidade=" + cidade + ", qtdQuarto=" + qtdQuarto
-				+ ", qdtVagas=" + qdtVagas + ", qdtSuite=" + qdtSuite + "]";
+				+ ", endereco=" + endereco + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade="
+				+ cidade + ", qtdQuarto=" + qtdQuarto + ", qdtVagas=" + qdtVagas + ", qdtSuite=" + qdtSuite
+				+ ", metragem=" + metragem + "]";
 	}
 
 }

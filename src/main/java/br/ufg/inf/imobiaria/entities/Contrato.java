@@ -25,9 +25,6 @@ public class Contrato implements Serializable {
 	@Column(name = "id_contrato")
 	private Integer idContrato;
 
-	@Column(name = "desc_departamento")
-	private String dsDepartamento;
-
 	@OneToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario inquilino;
@@ -61,12 +58,11 @@ public class Contrato implements Serializable {
 		super();
 	}
 
-	public Contrato(Integer idContrato, String dsDepartamento, Usuario inquilino, Imovel imovel, Set<Pessoa> fiadores,
+	public Contrato(Integer idContrato, Usuario inquilino, Imovel imovel, Set<Pessoa> fiadores,
 			Date dtContratoInicio, Boolean ativo, Float vlAluguel, int diaVencimento, Float descontoAssuidade,
 			int prazo) {
 		super();
 		this.idContrato = idContrato;
-		this.dsDepartamento = dsDepartamento;
 		this.inquilino = inquilino;
 		this.imovel = imovel;
 		this.fiadores = fiadores;
@@ -84,14 +80,6 @@ public class Contrato implements Serializable {
 
 	public void setIdContrato(Integer idContrato) {
 		this.idContrato = idContrato;
-	}
-
-	public String getDsDepartamento() {
-		return dsDepartamento;
-	}
-
-	public void setDsDepartamento(String dsDepartamento) {
-		this.dsDepartamento = dsDepartamento;
 	}
 
 	public Usuario getInquilino() {
@@ -168,7 +156,7 @@ public class Contrato implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Contrato [idContrato=" + idContrato + ", dsDepartamento=" + dsDepartamento + ", inquilino=" + inquilino
+		return "Contrato [idContrato=" + idContrato + ", inquilino=" + inquilino
 				+ ", imovel=" + imovel + ", fiadores=" + fiadores + ", dtContratoInicio=" + dtContratoInicio
 				+ ", ativo=" + ativo + ", vlAluguel=" + vlAluguel + ", diaVencimento=" + diaVencimento
 				+ ", descontoAssuidade=" + descontoAssuidade + ", prazo=" + prazo + "]";

@@ -1,20 +1,33 @@
 package br.ufg.inf.imobiaria;
 
-import java.util.Arrays;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import br.ufg.inf.imobiaria.entities.AgendaVisita;
+import br.ufg.inf.imobiaria.entities.Contrato;
 import br.ufg.inf.imobiaria.entities.Departamento;
 import br.ufg.inf.imobiaria.entities.Funcionario;
+import br.ufg.inf.imobiaria.entities.Imovel;
+import br.ufg.inf.imobiaria.entities.PagamentoAluguel;
 import br.ufg.inf.imobiaria.entities.Pessoa;
 import br.ufg.inf.imobiaria.entities.Usuario;
+import br.ufg.inf.imobiaria.enums.FormaPagamento;
+import br.ufg.inf.imobiaria.enums.StatusImovel;
+import br.ufg.inf.imobiaria.enums.TipoImovel;
+import br.ufg.inf.imobiaria.repositories.AgendaVisitaRepository;
+import br.ufg.inf.imobiaria.repositories.ContratoRepository;
 import br.ufg.inf.imobiaria.repositories.DepartamentoRepository;
 import br.ufg.inf.imobiaria.repositories.FuncionarioRepository;
+import br.ufg.inf.imobiaria.repositories.ImovelRepository;
+import br.ufg.inf.imobiaria.repositories.PagamentoAluguelRepository;
 import br.ufg.inf.imobiaria.repositories.PessoaRepository;
 import br.ufg.inf.imobiaria.repositories.UsuarioRepository;
 
@@ -36,6 +49,18 @@ public class CargaInicial implements CommandLineRunner {
 
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
+	
+	@Autowired
+	private ImovelRepository imovelRepository;
+	
+	@Autowired
+	private AgendaVisitaRepository agendaVisitaRepository; 
+
+	@Autowired
+	private ContratoRepository contratoRepository; 
+
+	@Autowired
+	private PagamentoAluguelRepository pagamentoAluguelRepository; 
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -78,6 +103,38 @@ public class CargaInicial implements CommandLineRunner {
 		departamentoRepository.saveAll(Arrays.asList(dep1, dep2));
 		
 		
+		Imovel imo1 = new Imovel(null, TipoImovel.APARTAMENTO, StatusImovel.OCUPADO, "Rua das Arraras", "Ap 303", "Jardim dos Pássaros", "Goiânia", 3, 2, 1, 55);
+		Imovel imo2 = new Imovel(null, TipoImovel.CASA, StatusImovel.OCUPADO, "Rua das Gaivotas", null, "Jardim dos Pássaros", "Goiânia", 3, 2, 2, 85);
+		Imovel imo3 = new Imovel(null, TipoImovel.TERRENO_LOTE, StatusImovel.DESOCUPADO, "Rua dos Urubus", null, "Jardim dos Pássaros", "Goiânia", null, null, null, 360);
+		Imovel imo4 = new Imovel(null, TipoImovel.SALA_COMERCIAL, StatusImovel.DESOCUPADO, "Rua dos Canários", null, "Jardim dos Pássaros", "Goiânia", null, null, null, 200);
+		Imovel imo5 = new Imovel(null, TipoImovel.APARTAMENTO, StatusImovel.DESOCUPADO, "Rua dos Sabiás", null, "Jardim dos Pássaros", "Goiânia", 3, 1, 1, 70);
+		Imovel imo6 = new Imovel(null, TipoImovel.CASA, StatusImovel.DESOCUPADO, "Rua dos Uirapuru", null, "Jardim dos Pássaros", "Goiânia", 3, 2, 2, 85);
+	
+		imovelRepository.saveAll(Arrays.asList(imo1, imo2, imo3, imo4, imo4, imo5, imo5, imo6));
+		
+		AgendaVisita age1 = new AgendaVisita(null, usu1, imo1, sdft.parse("01/03/2021 08:00:00"), sdft.parse("01/05/2021 08:03:00"), sdft.parse("01/05/2021 08:55:00"), true);
+		AgendaVisita age2 = new AgendaVisita(null, usu2, imo2, sdft.parse("08/02/2021 15:00:00"), sdft.parse("08/02/2021 15:15:00"), sdft.parse("08/02/2021 15:40:00"), true);
+		AgendaVisita age3 = new AgendaVisita(null, usu3, imo6, sdft.parse("22/04/2021 11:00:00"), sdft.parse("22/04/2021 11:03:00"), sdft.parse("22/04/2021 12:00:00"), true);
+
+		agendaVisitaRepository.saveAll(Arrays.asList(age1, age2, age3));
+		
+		Set<Pessoa> fiadores = new HashSet<Pessoa>(); 
+		fiadores.add(pes5);
+		fiadores.add(pes6);
+			
+		Contrato con1 = new Contrato(null, usu1, imo1, fiadores, sdf.parse("20/04/2021"), true, 800.0f, 10, 0.1f, 12);
+		Contrato con2 = new Contrato(null, usu2, imo1, fiadores, sdf.parse("15/02/2021"), true, 1200.0f, 1, 0.05f, 18);
+		Contrato con3 = new Contrato(null, usu3, imo1, fiadores, sdf.parse("30/04/2021"), true, 1000.0f, 15, 0.07f, 19);
+
+		contratoRepository.saveAll(Arrays.asList(con1, con2, con3));
+		
+		PagamentoAluguel pag1 = new PagamentoAluguel(null, con1, 720.0f, sdf.parse("10/05/2021"), sdf.parse("09/05/2021"), FormaPagamento.BOLETO);
+		PagamentoAluguel pag2 = new PagamentoAluguel(null, con2, 1140.0f, sdf.parse("01/03/2021"), sdf.parse("01/03/2021"), FormaPagamento.PIX);
+		PagamentoAluguel pag3 = new PagamentoAluguel(null, con2, 1140.0f, sdf.parse("01/04/2021"), sdf.parse("028/02/2021"), FormaPagamento.PIX);
+		PagamentoAluguel pag4 = new PagamentoAluguel(null, con2, 1140.0f, sdf.parse("01/05/2021"), sdf.parse("01/04/2021"), FormaPagamento.TRANSFERENCIA);
+		PagamentoAluguel pag5 = new PagamentoAluguel(null, con2, 1000.0f, sdf.parse("15/05/2021"), sdf.parse("20/05/2021"), FormaPagamento.CARTAOCREDITO);
+		
+		pagamentoAluguelRepository.saveAll(Arrays.asList(pag1, pag2, pag3, pag4, pag5));
 	}
 
 }
