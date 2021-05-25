@@ -1,8 +1,14 @@
 package br.ufg.inf.imobiaria.enums;
 
 public enum FormaPagamento {
-	DINHEIRO(0, "Dinheiro"), CHEQUE(1, "Chegue"), BOLETO(2, "Boleto"), CARTAOCREDITO(3, "Cartão de Crédito"),
-	CARTAODEBITO(4, "Cartão de Débito"), PIX(5, "Pix"), TRANSFERENCIA(6, "Tranferência");
+	NAO_PAGO(0, "Não Pago"), 
+	DINHEIRO(1, "Dinheiro"), 
+	CHEQUE(2, "Chegue"), 
+	BOLETO(3, "Boleto"), 
+	CARTAOCREDITO(4, "Cartão de Crédito"),
+	CARTAODEBITO(5, "Cartão de Débito"), 
+	PIX(6, "Pix"), 
+	TRANSFERENCIA(7, "Tranferência");
 
 	private int id;
 	private String value;

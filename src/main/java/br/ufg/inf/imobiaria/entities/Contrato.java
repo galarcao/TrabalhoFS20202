@@ -39,6 +39,9 @@ public class Contrato implements Serializable {
 
 	@Column(name = "data_contrato_inicio")
 	private Date dtContratoInicio;
+	
+	@Column(name = "data_contrato_termino")
+	private Date dtContratoTermino;
 
 	private Boolean ativo;
 
@@ -58,8 +61,8 @@ public class Contrato implements Serializable {
 		super();
 	}
 
-	public Contrato(Integer idContrato, Usuario inquilino, Imovel imovel, Set<Pessoa> fiadores,
-			Date dtContratoInicio, Boolean ativo, Float vlAluguel, int diaVencimento, Float descontoAssuidade,
+	public Contrato(Integer idContrato, Usuario inquilino, Imovel imovel, Set<Pessoa> fiadores, Date dtContratoInicio,
+			Date dtContratoTermino, Boolean ativo, Float vlAluguel, int diaVencimento, Float descontoAssuidade,
 			int prazo) {
 		super();
 		this.idContrato = idContrato;
@@ -67,12 +70,14 @@ public class Contrato implements Serializable {
 		this.imovel = imovel;
 		this.fiadores = fiadores;
 		this.dtContratoInicio = dtContratoInicio;
+		this.dtContratoTermino = dtContratoTermino;
 		this.ativo = ativo;
 		this.vlAluguel = vlAluguel;
 		this.diaVencimento = diaVencimento;
 		this.descontoAssuidade = descontoAssuidade;
 		this.prazo = prazo;
 	}
+
 
 	public Integer getIdContrato() {
 		return idContrato;
@@ -112,6 +117,14 @@ public class Contrato implements Serializable {
 
 	public void setDtContratoInicio(Date dtContratoInicio) {
 		this.dtContratoInicio = dtContratoInicio;
+	}
+
+	public Date getDtContratoTermino() {
+		return dtContratoTermino;
+	}
+
+	public void setDtContratoTermino(Date dtContratoTermino) {
+		this.dtContratoTermino = dtContratoTermino;
 	}
 
 	public Boolean getAtivo() {
