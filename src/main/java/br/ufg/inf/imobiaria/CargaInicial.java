@@ -122,9 +122,9 @@ public class CargaInicial implements CommandLineRunner {
 		fiadores.add(pes5);
 		fiadores.add(pes6);
 			
-		Contrato con1 = new Contrato(null, usu1, imo1, fiadores, sdf.parse("20/04/2021"), true, 800.0f, 10, 0.1f, 12);
-		Contrato con2 = new Contrato(null, usu2, imo1, fiadores, sdf.parse("15/02/2021"), true, 1200.0f, 1, 0.05f, 18);
-		Contrato con3 = new Contrato(null, usu3, imo1, fiadores, sdf.parse("30/04/2021"), true, 1000.0f, 15, 0.07f, 19);
+		Contrato con1 = new Contrato(null, usu1, imo1, fiadores, sdf.parse("20/04/2021"), null, true, 800.0f, 10, 0.1f, 12);
+		Contrato con2 = new Contrato(null, usu2, imo2, fiadores, sdf.parse("15/02/2021"), null, true, 1200.0f, 1, 0.05f, 18);
+		Contrato con3 = new Contrato(null, usu3, imo2, fiadores, sdf.parse("30/04/2021"), null, true, 1000.0f, 15, 0.07f, 19);
 
 		contratoRepository.saveAll(Arrays.asList(con1, con2, con3));
 		
