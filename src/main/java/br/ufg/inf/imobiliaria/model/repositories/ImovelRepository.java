@@ -1,5 +1,7 @@
 package br.ufg.inf.imobiliaria.model.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,4 +16,7 @@ public interface ImovelRepository extends JpaRepository<Imovel, Integer>{
 	
 	@Query("SELECT av FROM AgendaVisita av WHERE av.imovel.idImovel =:id")
 	public AgendaVisita imovelSerVisitado(@Param("id") Integer id);
+	
+	@Query("SELECT i FROM Imovel i WHERE i.statusImovel = 0")
+	public List<Imovel> findByImoveisDesocupados();
 }

@@ -1,5 +1,7 @@
 package br.ufg.inf.imobiliaria.ctrl.business;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class ImovelBusiness {
 	private ImovelRepository repository;
 	private StatusImovel statusImovel;
 	
+	
 	public Imovel insert(Imovel imovel) throws ImovelException {
 		this.validaImovel(imovel);
 		return(repository.save(imovel));
@@ -29,6 +32,10 @@ public class ImovelBusiness {
 		if(imovel.getBairro() == null || imovel.getCidade() == null || imovel.getEndereco() == null) {
 			throw new ImovelException("0002");
 		}
+	}
+	
+	public List<Imovel> findByImoveisDesocupados(){
+		return(repository.findByImoveisDesocupados());
 	}
 	
 	public Contrato imovelOcupado(Integer id) {
