@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.ufg.inf.imobiliaria.ctrl.exception.ImovelException;
+import br.ufg.inf.imobiliaria.model.entities.AgendaVisita;
+import br.ufg.inf.imobiliaria.model.entities.Contrato;
 import br.ufg.inf.imobiliaria.model.entities.Imovel;
 import br.ufg.inf.imobiliaria.model.enums.StatusImovel;
 import br.ufg.inf.imobiliaria.model.repositories.ImovelRepository;
@@ -27,5 +29,25 @@ public class ImovelBusiness {
 		if(imovel.getBairro() == null || imovel.getCidade() == null || imovel.getEndereco() == null) {
 			throw new ImovelException("0002");
 		}
+	}
+	
+	public Contrato imovelOcupado(Integer id) {
+		return(repository.imovelOcupado(id));
+	}
+	
+	public AgendaVisita imovelSerVisitado(Integer id) {
+		return(repository.imovelSerVisitado(id));
+	}
+	
+	public void delete(Integer id) throws ImovelException {
+		if(imovelOcupado(id) != null) {
+			throw new ImovelException("0003");
+		}
+		
+		if(imovelSerVisitado(id) != null) {
+			throw new ImovelException("0004");
+		}
+		
+		repository.deleteById(id);
 	}
 }
