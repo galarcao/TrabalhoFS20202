@@ -1,4 +1,4 @@
-package br.ufg.inf.imobiaria.enums;
+package br.ufg.inf.imobiliaria.model.enums;
 
 public enum FormaPagamento {
 	NAO_PAGO(0, "Não Pago"), 

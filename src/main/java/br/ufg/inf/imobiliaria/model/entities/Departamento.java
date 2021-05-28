@@ -1,4 +1,4 @@
-package br.ufg.inf.imobiaria.entities;
+package br.ufg.inf.imobiliaria.model.entities;
 
 import java.io.Serializable;
 

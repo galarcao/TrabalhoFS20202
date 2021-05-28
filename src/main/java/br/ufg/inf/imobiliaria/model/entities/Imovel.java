@@ -1,4 +1,4 @@
-package br.ufg.inf.imobiaria.entities;
+package br.ufg.inf.imobiliaria.model.entities;
 
 import java.io.Serializable;
 
@@ -9,8 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import br.ufg.inf.imobiaria.enums.StatusImovel;
-import br.ufg.inf.imobiaria.enums.TipoImovel;
+import br.ufg.inf.imobiliaria.model.enums.StatusImovel;
+import br.ufg.inf.imobiliaria.model.enums.TipoImovel;
 
 @Entity
 @Table(name = "tb_imovel")

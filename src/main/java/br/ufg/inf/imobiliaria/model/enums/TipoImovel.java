@@ -1,4 +1,4 @@
-package br.ufg.inf.imobiaria.enums;
+package br.ufg.inf.imobiliaria.model.enums;
 
 public enum TipoImovel {
 	APARTAMENTO(0, "Apartamento"),
