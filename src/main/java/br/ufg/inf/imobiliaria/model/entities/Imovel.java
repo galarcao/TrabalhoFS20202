@@ -1,4 +1,4 @@
-package br.ufg.inf.imobiaria.entities;
+package br.ufg.inf.imobiliaria.model.entities;
 
 import java.io.Serializable;
 
@@ -9,8 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import br.ufg.inf.imobiaria.enums.StatusImovel;
-import br.ufg.inf.imobiaria.enums.TipoImovel;
+import br.ufg.inf.imobiliaria.model.enums.StatusImovel;
+import br.ufg.inf.imobiliaria.model.enums.TipoImovel;
 
 @Entity
 @Table(name = "tb_imovel")
@@ -27,23 +27,27 @@ public class Imovel implements Serializable {
 
 	@Column(name = "status_imovel")
 	private StatusImovel statusImovel;
-
+	
+	@Column(name = "endereco")	
 	private String endereco;
-
+	
+	@Column(name = "complemento")
 	private String complemento;
 
+	@Column(name = "bairro")
 	private String bairro;
 
+	@Column(name = "cidade")
 	private String cidade;
 
 	@Column(name = "quantidade_quarto")
 	private Integer qtdQuarto;
 
 	@Column(name = "quantidade_vaga")
-	private Integer qdtVagas;
+	private Integer qtdVagas;
 
 	@Column(name = "quantidade_suite")
-	private Integer qdtSuite;
+	private Integer qtdSuite;
 
 	@Column(name = "metragem")
 	private Integer metragem;
@@ -53,7 +57,7 @@ public class Imovel implements Serializable {
 	}
 
 	public Imovel(Integer idImovel, TipoImovel tipoImovel, StatusImovel statusImovel, String endereco,
-			String complemento, String bairro, String cidade, Integer qtdQuarto, Integer qdtVagas, Integer qdtSuite,
+			String complemento, String bairro, String cidade, Integer qtdQuarto, Integer qtdVagas, Integer qtdSuite,
 			Integer metragem) {
 		super();
 		this.idImovel = idImovel;
@@ -64,8 +68,8 @@ public class Imovel implements Serializable {
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.qtdQuarto = qtdQuarto;
-		this.qdtVagas = qdtVagas;
-		this.qdtSuite = qdtSuite;
+		this.qtdVagas = qtdVagas;
+		this.qtdSuite = qtdSuite;
 		this.metragem = metragem;
 	}
 
@@ -134,19 +138,19 @@ public class Imovel implements Serializable {
 	}
 
 	public Integer getQdtVagas() {
-		return qdtVagas;
+		return qtdVagas;
 	}
 
-	public void setQdtVagas(Integer qdtVagas) {
-		this.qdtVagas = qdtVagas;
+	public void setQdtVagas(Integer qtdVagas) {
+		this.qtdVagas = qtdVagas;
 	}
 
 	public Integer getQdtSuite() {
-		return qdtSuite;
+		return qtdSuite;
 	}
 
-	public void setQdtSuite(Integer qdtSuite) {
-		this.qdtSuite = qdtSuite;
+	public void setQdtSuite(Integer qtdSuite) {
+		this.qtdSuite = qtdSuite;
 	}
 
 	public Integer getMetragem() {
@@ -161,7 +165,7 @@ public class Imovel implements Serializable {
 	public String toString() {
 		return "Imovel [idImovel=" + idImovel + ", tipoImovel=" + tipoImovel + ", statusImovel=" + statusImovel
 				+ ", endereco=" + endereco + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade="
-				+ cidade + ", qtdQuarto=" + qtdQuarto + ", qdtVagas=" + qdtVagas + ", qdtSuite=" + qdtSuite
+				+ cidade + ", qtdQuarto=" + qtdQuarto + ", qdtVagas=" + qtdVagas + ", qdtSuite=" + qtdSuite
 				+ ", metragem=" + metragem + "]";
 	}
 

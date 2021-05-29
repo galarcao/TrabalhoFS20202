@@ -1,4 +1,4 @@
-package br.ufg.inf.imobiaria.entities;
+package br.ufg.inf.imobiliaria.model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import br.ufg.inf.imobiaria.enums.FormaPagamento;
+import br.ufg.inf.imobiliaria.model.enums.FormaPagamento;
 
 @Entity
 @Table(name = "tb_pagamento_aluguel")

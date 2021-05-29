@@ -1,4 +1,4 @@
-package br.ufg.inf.imobiaria;
+package br.ufg.inf.imobiliaria;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,25 +11,25 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import br.ufg.inf.imobiaria.entities.AgendaVisita;
-import br.ufg.inf.imobiaria.entities.Contrato;
-import br.ufg.inf.imobiaria.entities.Departamento;
-import br.ufg.inf.imobiaria.entities.Funcionario;
-import br.ufg.inf.imobiaria.entities.Imovel;
-import br.ufg.inf.imobiaria.entities.PagamentoAluguel;
-import br.ufg.inf.imobiaria.entities.Pessoa;
-import br.ufg.inf.imobiaria.entities.Usuario;
-import br.ufg.inf.imobiaria.enums.FormaPagamento;
-import br.ufg.inf.imobiaria.enums.StatusImovel;
-import br.ufg.inf.imobiaria.enums.TipoImovel;
-import br.ufg.inf.imobiaria.repositories.AgendaVisitaRepository;
-import br.ufg.inf.imobiaria.repositories.ContratoRepository;
-import br.ufg.inf.imobiaria.repositories.DepartamentoRepository;
-import br.ufg.inf.imobiaria.repositories.FuncionarioRepository;
-import br.ufg.inf.imobiaria.repositories.ImovelRepository;
-import br.ufg.inf.imobiaria.repositories.PagamentoAluguelRepository;
-import br.ufg.inf.imobiaria.repositories.PessoaRepository;
-import br.ufg.inf.imobiaria.repositories.UsuarioRepository;
+import br.ufg.inf.imobiliaria.model.entities.AgendaVisita;
+import br.ufg.inf.imobiliaria.model.entities.Contrato;
+import br.ufg.inf.imobiliaria.model.entities.Departamento;
+import br.ufg.inf.imobiliaria.model.entities.Funcionario;
+import br.ufg.inf.imobiliaria.model.entities.Imovel;
+import br.ufg.inf.imobiliaria.model.entities.PagamentoAluguel;
+import br.ufg.inf.imobiliaria.model.entities.Pessoa;
+import br.ufg.inf.imobiliaria.model.entities.Usuario;
+import br.ufg.inf.imobiliaria.model.enums.FormaPagamento;
+import br.ufg.inf.imobiliaria.model.enums.StatusImovel;
+import br.ufg.inf.imobiliaria.model.enums.TipoImovel;
+import br.ufg.inf.imobiliaria.model.repositories.AgendaVisitaRepository;
+import br.ufg.inf.imobiliaria.model.repositories.ContratoRepository;
+import br.ufg.inf.imobiliaria.model.repositories.DepartamentoRepository;
+import br.ufg.inf.imobiliaria.model.repositories.FuncionarioRepository;
+import br.ufg.inf.imobiliaria.model.repositories.ImovelRepository;
+import br.ufg.inf.imobiliaria.model.repositories.PagamentoAluguelRepository;
+import br.ufg.inf.imobiliaria.model.repositories.PessoaRepository;
+import br.ufg.inf.imobiliaria.model.repositories.UsuarioRepository;
 
 @Configuration
 @Profile("test")

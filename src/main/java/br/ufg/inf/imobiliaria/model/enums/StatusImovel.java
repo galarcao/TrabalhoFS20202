@@ -1,4 +1,4 @@
-package br.ufg.inf.imobiaria.enums;
+package br.ufg.inf.imobiliaria.model.enums;
 
 public enum StatusImovel {
 	DESOCUPADO(0, "Desocupado"),
