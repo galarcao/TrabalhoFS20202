@@ -25,7 +25,7 @@ public class ImovelBusiness {
 	}
 	
 	public void validaImovel(Imovel imovel) throws ImovelException{
-		if(imovel.getStatusImovel() != statusImovel.DESOCUPADO || imovel.getStatusImovel() != statusImovel.MANUTENCAO) {
+		if(imovel.getStatusImovel() != statusImovel.DESOCUPADO && imovel.getStatusImovel() != statusImovel.MANUTENCAO) {
 			throw new ImovelException("0001");
 		}
 		
