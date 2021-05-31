@@ -27,7 +27,6 @@ public class Pessoa implements Serializable{
 	@Column(name="nome_pessoa")
 	private String nmPessoa;
 	
-	
 	private String cpf;
 	
 	@Column(name="data_nascimento")
