@@ -1,5 +1,6 @@
 package br.ufg.inf.imobiliaria.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 
 import javax.persistence.Column;
