@@ -3,13 +3,13 @@ package br.ufg.inf.imobiliaria.ctrl;
 
 import br.ufg.inf.imobiliaria.business.FuncionarioBusiness;
 import br.ufg.inf.imobiliaria.ctrl.dto.FuncionarioResponse;
+import br.ufg.inf.imobiliaria.model.repositories.FuncionarioRepository;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,9 +18,11 @@ import java.util.Optional;
 public class FuncionarioCtrl {
 	
 	private final FuncionarioBusiness funcionarioBusiness;
+	private final FuncionarioRepository funcionarioRepository;
 	
-	public FuncionarioCtrl(FuncionarioBusiness funcionarioBusiness) {
+	public FuncionarioCtrl(FuncionarioBusiness funcionarioBusiness, FuncionarioRepository funcionarioRepository) {
 		this.funcionarioBusiness = funcionarioBusiness;
+		this.funcionarioRepository = funcionarioRepository;
 	}
 	
 	@GetMapping
@@ -31,7 +33,6 @@ public class FuncionarioCtrl {
 	
 	@GetMapping("/{id}")
 	public Optional<FuncionarioResponse> getFuncionario() {
-		System.out.println();
 		return null;
 	}
 	
