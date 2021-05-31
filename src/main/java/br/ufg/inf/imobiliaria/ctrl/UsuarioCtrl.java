@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufg.inf.imobiliaria.ctrl.business.UsuarioBusiness;
+import br.ufg.inf.imobiliaria.business.UsuarioBusiness;
 import br.ufg.inf.imobiliaria.ctrl.exception.UsuarioException;
 import br.ufg.inf.imobiliaria.model.entities.Usuario;
-import br.ufg.inf.imobiliaria.util.Message;
 
 
 @RestController

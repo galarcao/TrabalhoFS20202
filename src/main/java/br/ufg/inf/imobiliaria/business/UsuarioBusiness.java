@@ -1,4 +1,4 @@
-package br.ufg.inf.imobiliaria.ctrl.business;
+package br.ufg.inf.imobiliaria.business;
 
 
 import java.util.List;
