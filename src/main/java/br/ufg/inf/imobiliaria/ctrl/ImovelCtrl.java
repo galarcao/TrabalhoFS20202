@@ -58,6 +58,25 @@ public class ImovelCtrl {
 		}
 		return new ResponseEntity<List<Imovel>>(list, headers, status);
 	}
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Imovel> findById(@PathVariable Integer id) {
+		HttpHeaders headers = new HttpHeaders();
+		HttpStatus status = HttpStatus.OK;
+
+		Imovel retorno = new Imovel();
+		try {
+			retorno = business.findById(id);
+		} catch (ImovelException e) {
+			headers.add("message", Message.get(e.getMessage()));
+			status = HttpStatus.NO_CONTENT;
+		} catch (Exception e) {
+			headers.add("message", Message.get("0010"));
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		return new ResponseEntity<Imovel>(retorno, headers, status);
+	}
+	
 	@GetMapping(value = "/desocupados")
 	public ResponseEntity<List<Imovel>> findByImoveisDesocupados(){
 		HttpHeaders headers = new HttpHeaders();
