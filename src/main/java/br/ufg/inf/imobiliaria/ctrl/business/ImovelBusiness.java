@@ -24,6 +24,10 @@ public class ImovelBusiness {
 		return(repository.save(imovel));
 	}
 	
+	public List<Imovel> findAll() {
+		return(repository.findAll());
+	}
+	
 	public void validaImovel(Imovel imovel) throws ImovelException{
 		if(imovel.getStatusImovel() != statusImovel.DESOCUPADO && imovel.getStatusImovel() != statusImovel.MANUTENCAO) {
 			throw new ImovelException("0001");
@@ -44,6 +48,22 @@ public class ImovelBusiness {
 	
 	public AgendaVisita imovelSerVisitado(Integer id) {
 		return(repository.imovelSerVisitado(id));
+	}
+	
+	public Imovel update(Imovel imovel) throws ImovelException {
+		this.validaImovel(imovel);
+		Imovel imovelUpdate = repository.findById(imovel.getIdImovel()).get();
+		imovelUpdate.setBairro(imovel.getBairro());
+		imovelUpdate.setCidade(imovel.getCidade());
+		imovelUpdate.setComplemento(imovel.getComplemento());
+		imovelUpdate.setEndereco(imovel.getEndereco());
+		imovelUpdate.setMetragem(imovel.getMetragem());
+		imovelUpdate.setQdtSuite(imovel.getQdtSuite());
+		imovelUpdate.setQdtVagas(imovel.getQdtVagas());
+		imovelUpdate.setQtdQuarto(imovel.getQtdQuarto());
+		imovelUpdate.setStatusImovel(imovel.getStatusImovel());
+		imovelUpdate.setTipoImovel(imovel.getTipoImovel());
+		return (repository.save(imovelUpdate));
 	}
 	
 	public void delete(Integer id) throws ImovelException {
