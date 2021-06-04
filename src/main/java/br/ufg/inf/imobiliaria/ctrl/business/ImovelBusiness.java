@@ -1,6 +1,7 @@
 package br.ufg.inf.imobiliaria.ctrl.business;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,14 @@ public class ImovelBusiness {
 	
 	public List<Imovel> findAll() {
 		return(repository.findAll());
+	}
+	
+	public Imovel findById(Integer id) throws ImovelException{
+		Optional<Imovel> retorno = repository.findById(id);
+		if (retorno.isEmpty()) {
+			throw new ImovelException("0109");
+		}
+		return(repository.getById(id));
 	}
 	
 	public void validaImovel(Imovel imovel) throws ImovelException{
