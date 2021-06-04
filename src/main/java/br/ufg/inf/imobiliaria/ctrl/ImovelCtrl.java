@@ -45,6 +45,18 @@ public class ImovelCtrl {
 		return new ResponseEntity<Imovel>(imovel, headers, status);
 	}
 	
+	@GetMapping
+	public ResponseEntity<List<Imovel>> findAll() {
+		HttpHeaders headers = new HttpHeaders();
+		HttpStatus status = HttpStatus.OK;
+
+		List<Imovel> list = business.findAll();
+		if (list.size() == 0) {
+			status = HttpStatus.NO_CONTENT;
+			headers.add("message", Message.get("0010"));
+		}
+		return new ResponseEntity<List<Imovel>>(list, headers, status);
+	}
 	@GetMapping(value = "/desocupados")
 	public ResponseEntity<List<Imovel>> findByImoveisDesocupados(){
 		HttpHeaders headers = new HttpHeaders();
@@ -59,6 +71,25 @@ public class ImovelCtrl {
 		
 		return new ResponseEntity<List<Imovel>>(list, headers, status);
 	}
+	
+	@PutMapping
+	public ResponseEntity<Imovel> update(@RequestBody Imovel imovel) {
+		HttpStatus status = HttpStatus.OK;
+		HttpHeaders headers = new HttpHeaders();
+
+		try {
+			imovel = business.insert(imovel);
+			headers.add("message", Message.get("0006"));
+		} catch (ImovelException e) {
+			status = HttpStatus.BAD_REQUEST;
+			headers.add("message", Message.get(e.getMessage()));
+		} catch (Exception e) {
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+			headers.add("message", Message.get("0000"));
+		}
+		return new ResponseEntity<Imovel>(imovel, headers, status);
+	}
+	
 	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
