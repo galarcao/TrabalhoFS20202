@@ -1,8 +1,6 @@
 package br.ufg.inf.imobiliaria.model.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.io.Serializable;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "tb_usuario")

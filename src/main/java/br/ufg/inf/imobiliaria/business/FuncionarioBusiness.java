@@ -1,5 +1,6 @@
 package br.ufg.inf.imobiliaria.business;
 
+import br.ufg.inf.imobiliaria.ctrl.exception.FuncionarioException;
 import br.ufg.inf.imobiliaria.model.entities.Funcionario;
 import br.ufg.inf.imobiliaria.model.repositories.FuncionarioRepository;
 import org.springframework.data.domain.Page;

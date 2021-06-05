@@ -1,5 +1,7 @@
 package br.ufg.inf.imobiliaria.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,9 +31,11 @@ public class Pessoa implements Serializable{
 	@Column(name="nome_pessoa")
 	private String nmPessoa;
 	
+	@Column(name = "cpf")
 	private String cpf;
 	
 	@Column(name="data_nascimento")
+	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dtNascimento;
 
 	public Pessoa() {
