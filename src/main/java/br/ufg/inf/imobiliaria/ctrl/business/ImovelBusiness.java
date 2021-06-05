@@ -60,19 +60,34 @@ public class ImovelBusiness {
 	}
 	
 	public Imovel update(Imovel imovel) throws ImovelException {
-		this.validaImovel(imovel);
 		Imovel imovelUpdate = repository.findById(imovel.getIdImovel()).get();
-		imovelUpdate.setBairro(imovel.getBairro());
-		imovelUpdate.setCidade(imovel.getCidade());
-		imovelUpdate.setComplemento(imovel.getComplemento());
-		imovelUpdate.setEndereco(imovel.getEndereco());
-		imovelUpdate.setMetragem(imovel.getMetragem());
-		imovelUpdate.setQdtSuite(imovel.getQdtSuite());
-		imovelUpdate.setQdtVagas(imovel.getQdtVagas());
-		imovelUpdate.setQtdQuarto(imovel.getQtdQuarto());
-		imovelUpdate.setStatusImovel(imovel.getStatusImovel());
-		imovelUpdate.setTipoImovel(imovel.getTipoImovel());
+		
+		if (this.atualizavel(imovel)){
+			this.validaImovel(imovel);
+			
+			imovelUpdate.setBairro(imovel.getBairro());
+			imovelUpdate.setCidade(imovel.getCidade());
+			imovelUpdate.setComplemento(imovel.getComplemento());
+			imovelUpdate.setEndereco(imovel.getEndereco());
+			imovelUpdate.setMetragem(imovel.getMetragem());
+			imovelUpdate.setQdtSuite(imovel.getQdtSuite());
+			imovelUpdate.setQdtVagas(imovel.getQdtVagas());
+			imovelUpdate.setQtdQuarto(imovel.getQtdQuarto());
+			imovelUpdate.setStatusImovel(imovel.getStatusImovel());
+			imovelUpdate.setTipoImovel(imovel.getTipoImovel());
+			
+		}
 		return (repository.save(imovelUpdate));
+	}
+	
+	private boolean atualizavel(Imovel imovel) {
+		if (imovel.getStatusImovel().equals(StatusImovel.DESOCUPADO)){
+			return true;
+		}else if (imovel.getStatusImovel().equals(StatusImovel.MANUTENCAO){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	public void delete(Integer id) throws ImovelException {
