@@ -39,6 +39,7 @@ public class AgendaVisita implements Serializable {
 	@Column(name = "data_hora_devolucao_chave")
 	private Date dtDevolucaoChave;
 
+	@Column(name = "aprovado")
 	private Boolean aprovado;
 
 	public AgendaVisita() {
